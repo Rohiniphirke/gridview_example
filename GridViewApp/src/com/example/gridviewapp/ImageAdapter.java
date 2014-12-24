@@ -1,9 +1,12 @@
 package com.example.gridviewapp;
 
+import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
 	
@@ -14,8 +17,9 @@ public class ImageAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		return mThumbIds.length;
 	}
 
 	@Override
@@ -31,18 +35,37 @@ public class ImageAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		// TODO Auto-generated method stub
-		return null;
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ImageView imageView;
+		if(convertView == null){
+			imageView = new ImageView(mContext);
+			imageView.setLayoutParams(new GridView.LayoutParams(150,150));
+			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+			imageView.setPadding(5, 5,5,5);
+		}
+		else
+		{
+			imageView = (ImageView) convertView;
+		}
+		imageView.setImageResource(mThumbIds[position]);
+		
+		return imageView;
 	}
+		
+		
+		
+		
 	
 	
-	public Integer[] mThumbTds = {
-			R.drawable.sample_0,R.drawable.sample_1,
-			R.drawable.sample_2,R.drawable.sample_3,
-			R.drawable.sample_4,R.drawable.sample_5,
-			R.drawable.sample_6,R.drawable.sample_7,
-			R.drawable.sample_3,R.drawable.sample_0,
+	public Integer[] mThumbIds = {
+			R.drawable.image1,R.drawable.image2,
+			R.drawable.image3,R.drawable.image4,
+			R.drawable.image6,R.drawable.image5,
+			R.drawable.image7,R.drawable.image1,
+			R.drawable.image2,R.drawable.image3,
+			R.drawable.image8,R.drawable.image9
+			
+			
 			
 	};
 
